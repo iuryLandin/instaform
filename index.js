@@ -1,27 +1,24 @@
-var bodyParser = require('body-parser');
-var express = require('express');
+ var express = require('express');
+ const API = require('./leads');
 
-const API = require('./leads');
+ var app = express();
 
-var app = express();
+ app.set('port', (process.env.PORT || 5000));
+ app.listen(app.get('port'));
 
-app.set('port', (process.env.PORT || 5000));
-app.listen(app.get('port'));
+ app.use(
+     express.urlencoded({
+         extended: true
+     })
+ )
 
-app.use(bodyParser.json());
-app.use(
-    express.urlencoded({
-        extended: true
-    })
-)
+ app.get('/', function(req, res) {
+     API({
+         token: req.body.token,
+         formId: req.body.formId,
+     }, function(resultado) {
+         res.send(resultado);
+         console.log(resultado)
+     });
 
-app.get('/', function(req, res) {
-    API({
-        token: req.body.token,
-        formId: req.body.formId,
-    }, function(resultado) {
-        res.send(resultado);
-        console.log(resultado)
-    });
-
-});
+ });
