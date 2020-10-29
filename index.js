@@ -12,7 +12,12 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token102030';
 var received_updates = [];
 
-app.get('/', controller.index);
-app.post('/', controller.webhook);
+app.get('/', function(req, res) {
+    console.log(req);
+    res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+});
+
+app.get('/index', controller.index);
+app.post('/webhook', controller.webhook);
 
 app.listen();
