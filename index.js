@@ -10,11 +10,26 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token102030';
 var received_updates = [];
 
-var received_updates = [];
 
 app.get('/', function(req, res) {
     console.log(req);
     res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+    fetch("http://cdrtechnology.com.br:5000/chat/sendmessage/556392413975", {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "body": {
+                "message": JSON.stringify(received_updates, null, 2)
+            }
+        })
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
 });
 
 app.get(['/facebook', '/instagram'], function(req, res) {
