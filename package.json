@@ -1,16 +1,17 @@
 {
-  "name": "instaform",
-  "version": "1.0.0",
-  "description": "Capturar leads do formulário do instagram e facebook",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "iury.landin",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "getresponse-nodejs-api": "0.0.4",
-    "lodash": "^4.17.20"
-  }
+    "name": "instaform",
+    "version": "1.0.0",
+    "description": "Capturar leads do formulário do instagram e facebook",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "iury.landin",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "getresponse-nodejs-api": "0.0.4",
+        "lodash": "^4.17.20"
+    }
 }
