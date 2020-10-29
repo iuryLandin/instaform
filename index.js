@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 var token = process.env.TOKEN || 'token102030';
 var received_updates = [];
 
-ar received_updates = [];
+var received_updates = [];
 
 app.get('/', function(req, res) {
     console.log(req);
