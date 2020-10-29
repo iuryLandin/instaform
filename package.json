@@ -11,6 +11,7 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.17.1",
+        "fb": "^2.0.0",
         "getresponse-nodejs-api": "0.0.4",
         "lodash": "^4.17.20"
     }
