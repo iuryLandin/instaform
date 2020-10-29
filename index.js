@@ -1,50 +1,27 @@
 var bodyParser = require('body-parser');
 var express = require('express');
+
+const API = require('./leads');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
 
 app.use(bodyParser.json());
-
-var token = process.env.TOKEN || 'token102030';
-var received_updates = [];
-
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+)
 
 app.get('/', function(req, res) {
-    console.log(req);
-    res.send('<pre>' + JSON.stringify(received_updates, null, 2) + '</pre>');
+    API({
+        token: req.body.token,
+        formId: req.body.formId,
+    }, function(resultado) {
+        res.send(resultado);
+        console.log(resultado)
+    });
 
 });
-
-app.get(['/facebook', '/instagram'], function(req, res) {
-
-    if (
-        req.query['hub.mode'] == 'subscribe' &&
-        req.query['hub.verify_token'] == token
-    ) {
-        res.send(req.query['hub.challenge']);
-    } else {
-        res.sendStatus(400);
-    }
-});
-
-app.post('/facebook', function(req, res) {
-    console.log("\n\n ---------- facebook req body: \n\n")
-    console.log(req.body);
-
-    // Process the Facebook updates here
-    received_updates.unshift(req.body);
-    res.sendStatus(200);
-});
-
-app.post('/instagram', function(req, res) {
-    console.log('Instagram request body:');
-    console.log(req.body);
-    // Process the Instagram updates here
-    received_updates.unshift(req.body);
-    res.sendStatus(200);
-});
-
-
-app.listen();
