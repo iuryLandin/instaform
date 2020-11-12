@@ -40,7 +40,7 @@ app.post('/facebook', async function(req, res) {
     console.log(JSON.stringify(req.body));
 
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
-    var leadgen_id = res.entry[0].changes[0].value.leadgen_id;
+    var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
 
     await fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
         .then(resultado => {
