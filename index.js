@@ -37,7 +37,10 @@ app.get(['/facebook', '/instagram'], function(req, res) {
 app.post('/facebook', function(req, res) {
     console.log('Facebook request body:', req.body);
 
-
+    var app_token = ''
+    fetch("https://graph.facebook.com/v9.0/1117565708662618/leads?access_token=" + app_token).then(function(response) {
+        console.log(response)
+    });
 
 
 
