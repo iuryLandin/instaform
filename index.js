@@ -39,10 +39,9 @@ app.get('/facebook', function(req, res) {
 app.post('/facebook', async function(req, res) {
     console.log(JSON.stringify(req.body));
 
-    var lead_data = JSON.parse(req.body.object);
 
     console.log("\n\n\n");
-    console.log(lead_data);
+    console.log(req.body.entry[0].changes[0].value.leadgen_id);
     console.log("\n\n\n");
 
     // token de produção do app
