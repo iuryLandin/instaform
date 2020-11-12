@@ -1,6 +1,3 @@
- var express = require('express');
- const API = require('./leads');
-
  var app = express();
  const API = require('./leads')
 
