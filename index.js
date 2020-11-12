@@ -36,7 +36,7 @@ app.get('/facebook', function(req, res) {
     }
 });
 
-app.post('/facebook', async function(req, res) {
+app.post('/facebook', function(req, res) {
 
 
     // token de produção do app
@@ -46,9 +46,9 @@ app.post('/facebook', async function(req, res) {
     var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
-    await fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
+    fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
         .then(resultado => {
-            console.log(resultado.data)
+            console.log(resultado)
         });
 
 
