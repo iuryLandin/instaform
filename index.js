@@ -51,7 +51,7 @@ app.post('/facebook', async function(req, res) {
     //declara variavel com id do lead recebido
     // var leadgen_id = lead_data.changes[0].value.leadgen_id;
 
-    var lead_data '0';
+    var lead_data = '0';
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
     await fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
