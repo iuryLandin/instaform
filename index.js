@@ -8,6 +8,8 @@
 
 var bodyParser = require('body-parser');
 var express = require('express');
+const fetch = require('node-fetch');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -34,12 +36,17 @@ app.get(['/facebook', '/instagram'], function(req, res) {
     }
 });
 
-app.post('/facebook', function(req, res) {
+app.post('/facebook', async function(req, res) {
     console.log(JSON.stringify(req.body));
 
     // EAAD4zoqzrpUBAI8FlJzzXNLXeiIV06nNoHaekCODCblfbOWQZAP6SK6YhlCzEBQOLhQElyOhfVxKwjdqrAaZCYE5h2mWuh3wzQqIX1uyqci1tyYPM70BPhwmQNFFUNpsSJHv0alRMfDvXzZB1bwBimZBUrl1QsZC50Xr2d77bcZB2DvxkyNZBU1X55YoVmRmEMZD
 
     // var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
+
+    await fetch("https://graph.facebook.com/v8.0/825586654893122?access_token=XXXXXXXX")
+        .then(resultado => {
+            console.log(resultado)
+        });
 
     // Process the Facebook updates here
     received_updates.unshift(req.body);
