@@ -46,10 +46,10 @@ app.post('/facebook', function(req, res) {
     var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
-    fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
+    fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
         .then(resultado => {
             console.log(resultado)
-        });
+        }).catch(err => console.error(err));
 
 
     // Process the Facebook updates here
