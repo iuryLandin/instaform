@@ -40,10 +40,11 @@ app.post('/facebook', async function(req, res) {
     console.log(JSON.stringify(req.body));
 
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
+    var leadgen_id = res.entry[0].changes[0].value.leadgen_id;
 
-    await fetch("https://graph.facebook.com/v8.0/825586654893122?access_token=" + app_token)
+    await fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
         .then(resultado => {
-            console.log(resultado)
+            console.log(resultado.data)
         });
 
     // Process the Facebook updates here
