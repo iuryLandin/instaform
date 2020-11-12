@@ -39,7 +39,7 @@ app.get('/facebook', function(req, res) {
 app.post('/facebook', async function(req, res) {
     console.log(JSON.stringify(req.body));
 
-    var lead_data = JSON.parse(req.body.object.entry[0]);
+    var lead_data = JSON.parse(req.body.object);
 
     console.log("\n\n\n")
     console.log(lead_data)
@@ -49,9 +49,10 @@ app.post('/facebook', async function(req, res) {
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
 
     //declara variavel com id do lead recebido
-    var leadgen_id = lead_data.changes[0].value.leadgen_id;
+    // var leadgen_id = lead_data.changes[0].value.leadgen_id;
 
-    //faz uma requisição no facebook para pegar os dados do formulario do lead
+    var lead_data '0'
+        //faz uma requisição no facebook para pegar os dados do formulario do lead
     await fetch(`"https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
         .then(resultado => {
             console.log(resultado.data)
