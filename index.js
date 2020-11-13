@@ -44,6 +44,8 @@ app.post('/facebook', function(req, res) {
     // token de produção do app
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
 
+    var long_lived_token = 'EAAD4zoqzrpUBAKzhhPKVPhQsXZBTx1nDIfPwj19KAvjwupDtQWPjmxj7rkyMYqM2q2TKJjDdXenrkmbk4uDLvds7g3G6xAOvFaa2GyZAqAZBxAx3AYz5hoKtIFRGaUIAs6cppdbIezrs3fGKGdCl1QkfBvydVFdg0BcP77WCQj7LdqmkWGgdCDZAd981wZATX3oKT96lfkniLZBU5a9WGZBqogLit0EBE0ZD';
+
     //declara variavel com id do lead recebido
     var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
 
@@ -51,7 +53,7 @@ app.post('/facebook', function(req, res) {
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
     // no momento não funciona pelo fato em que precisa do token com permissão
-    fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${app_token}`)
+    fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`)
         .then(resultado => {
             console.log(resultado)
         }).catch(err => console.error(err));
