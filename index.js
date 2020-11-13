@@ -43,7 +43,7 @@ app.post('/facebook', async function(req, res) {
     // token de produção do app
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
 
-    var long_lived_token = 'EAAD4zoqzrpUBAKzhhPKVPhQsXZBTx1nDIfPwj19KAvjwupDtQWPjmxj7rkyMYqM2q2TKJjDdXenrkmbk4uDLvds7g3G6xAOvFaa2GyZAqAZBxAx3AYz5hoKtIFRGaUIAs6cppdbIezrs3fGKGdCl1QkfBvydVFdg0BcP77WCQj7LdqmkWGgdCDZAd981wZATX3oKT96lfkniLZBU5a9WGZBqogLit0EBE0ZD';
+    var long_lived_token = 'EAAD4zoqzrpUBABQBLkcHr0DuJ2O4ARzDEeyl28qUKO65V50NHd24fjVg7lZCHCUieShakzfAO7kAYqA4UV41PqPanBKYDdPgUUXRwsXQaS2SZBWnFA4YkqjCYb1oxbqVTUS6k3stGuIbsNUU80BjcS8wf0iZCMjnomxbvj3ns06LFM8Q3J4jVukmMt4td8ZD';
 
     //declara variavel com id do lead recebido
     var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
