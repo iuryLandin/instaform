@@ -36,7 +36,7 @@ app.get('/facebook', function(req, res) {
     }
 });
 
-app.post('/facebook', function(req, res) {
+app.post('/facebook', async function(req, res) {
 
 
 
@@ -53,7 +53,7 @@ app.post('/facebook', function(req, res) {
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
     // no momento não funciona pelo fato em que precisa do token com permissão
-    fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`)
+    await fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`)
         .then(resultado => {
             console.log(resultado.json())
         }).catch(err => console.error(err));
