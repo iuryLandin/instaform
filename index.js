@@ -39,11 +39,15 @@ app.get('/facebook', function(req, res) {
 app.post('/facebook', function(req, res) {
 
 
+
+
     // token de produção do app
-    var app_token = 'add_token Aqui';
+    var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
 
     //declara variavel com id do lead recebido
     var leadgen_id = req.body.entry[0].changes[0].value.leadgen_id;
+
+    console.log(leadgen_id);
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
     // no momento não funciona pelo fato em que precisa do token com permissão
