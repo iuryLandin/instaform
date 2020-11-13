@@ -55,7 +55,7 @@ app.post('/facebook', function(req, res) {
     // no momento não funciona pelo fato em que precisa do token com permissão
     fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`)
         .then(resultado => {
-            console.log(resultado)
+            console.log(resultado.json())
         }).catch(err => console.error(err));
 
 
