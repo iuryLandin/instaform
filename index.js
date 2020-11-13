@@ -74,6 +74,12 @@ app.post('/facebook', async function(req, res) {
     console.log("\nEmail: " + email);
     console.log("\nPhone: " + phone);
 
+
+    var crm_url = `https://crm.inorte.com.br/lead_api/LeadApi/add?nome=${nome}&email=${email}&phone=${phone}`;
+
+    var send_to_crm = await fetch(crm_url).then(resp => resp.json())
+
+
     // Process the Facebook updates here
     received_updates.unshift(req.body);
     res.sendStatus(200);
