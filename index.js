@@ -54,10 +54,12 @@ app.post('/facebook', async function(req, res) {
     // no momento não funciona pelo fato em que precisa do token com permissão
     var f = await fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`, { method: 'GET', headers })
         .then(resultado => {
-            resultado.json()
+            resultado
         }).catch(err => console.error(err));
 
     console.log(f);
+    console.log("\n\n\n");
+    console.log(f.data);
 
     // Process the Facebook updates here
     received_updates.unshift(req.body);
