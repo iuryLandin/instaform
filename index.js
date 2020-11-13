@@ -55,8 +55,24 @@ app.post('/facebook', async function(req, res) {
     var f = await fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`, { method: 'GET', headers }).then(resp => resp.json())
 
     console.log(f);
-    console.log("\n\n\n");
-    console.log(JSON.stringify(f));
+
+    let nome;
+    let email;
+    let phone;
+
+    for (let i = 0; i < f.field_data.length; i++) {
+        let aux = f.field_data;
+        if (aux[i].name === "email") {
+            email = aux[i].values[0];
+        } else if (aux[i].name === "full_name") {
+            nome = aux[i].values[0];
+        } else if (aux[i].name === "phone_number") {
+            phone = aux[i].values[0];
+        }
+    }
+    console.log("\nNome: " + nome);
+    console.log("\nEmail: " + email);
+    console.log("\nPhone: " + phone);
 
     // Process the Facebook updates here
     received_updates.unshift(req.body);
