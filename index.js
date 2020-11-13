@@ -38,6 +38,8 @@ app.get('/facebook', function(req, res) {
 
 app.post('/facebook', async function(req, res) {
 
+    const headers = { "content-type": "application/json", "accept": "application/json" };
+
     // token de produção do app
     var app_token = '273565973982869|mA9Tj_TrYF_RYsGtYmygHRZDKj4';
 
@@ -50,7 +52,7 @@ app.post('/facebook', async function(req, res) {
 
     //faz uma requisição no facebook para pegar os dados do formulario do lead
     // no momento não funciona pelo fato em que precisa do token com permissão
-    var f = await fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`)
+    var f = await fetch(`https://graph.facebook.com/v8.0/${leadgen_id}?access_token=${long_lived_token}`, { method: 'GET', headers })
         .then(resultado => {
             resultado.json()
         }).catch(err => console.error(err));
